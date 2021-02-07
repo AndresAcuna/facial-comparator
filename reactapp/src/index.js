@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import './index.css';
-import AWS, { Route53Resolver } from 'aws-sdk';
+import AWS from 'aws-sdk';
+import CognitoIdentityClient from 'aws-sdk'
 
 
 class ComparatorInitiator extends React.Component {
@@ -102,13 +103,14 @@ class Page extends React.Component {
   constructor(props) {
     super(props);
     
-    var ACCESS_KEY = "";
-    var SECRET_KEY = "";
-      
-    const s3 = new AWS.S3({
-      accessKeyId: ACCESS_KEY,
-      secretAccessKey: SECRET_KEY
+    AWS.config.update({
+      region: 'us-east-1',
+      credentials: new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-east-1:29497a54-556b-465b-a6e9-597866303601',
+      })
     });
+
+    const s3 = new AWS.S3();
 
     this.state={
       results:[],
