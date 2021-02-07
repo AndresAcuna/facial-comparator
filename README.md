@@ -42,12 +42,12 @@ The application will show one button and an empty table below.
 
 Click the button to trigger the Lambda through an API Gateway.
 
-- Wait for the Lambda to return the results.
-- Once the results are complete, the table will be updated
+Wait for the Lambda to return the results.
+Once the results are complete, the table will be updated
     with the pictures of the faces as well as a similarity
     Score on the right hand side, if the pictures are not loaded
     then the application will display the filenames. 
-- Hovering over the pictures will display the filename as well.
+Hovering over the pictures will display the filename as well.
 
 
 
