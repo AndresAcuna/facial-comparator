@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.amazonaws.AmazonServiceException;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
@@ -21,11 +19,10 @@ public class AwsS3Getter {
 
     private AmazonS3 client;
 
-    private AwsS3Getter(BasicAWSCredentials awsCreds) {
+    private AwsS3Getter() {
         
         client = AmazonS3ClientBuilder
             .standard()
-            .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
             .withRegion(S3_REGION)
             .build();
     }
@@ -54,9 +51,9 @@ public class AwsS3Getter {
         return filenames;
     }
 
-    public static AwsS3Getter getInstance(BasicAWSCredentials awsCreds){
+    public static AwsS3Getter getInstance(){
         if(instance == null){
-            instance = new AwsS3Getter(awsCreds);
+            instance = new AwsS3Getter();
         }
         return instance;
     }

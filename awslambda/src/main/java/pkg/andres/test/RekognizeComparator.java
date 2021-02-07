@@ -1,18 +1,14 @@
 package pkg.andres.test;
 
-import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.rekognition.AmazonRekognition;
 import com.amazonaws.services.rekognition.AmazonRekognitionClientBuilder;
 import com.amazonaws.services.rekognition.model.CompareFacesRequest;
 import com.amazonaws.services.rekognition.model.CompareFacesResult;
 import com.amazonaws.services.rekognition.model.Image;
 import com.amazonaws.services.rekognition.model.S3Object;
-import com.amazonaws.util.IOUtils;
 
 class RekognizeComparator {
 
@@ -22,10 +18,9 @@ class RekognizeComparator {
 
     AmazonRekognition client;
 
-    private RekognizeComparator(BasicAWSCredentials awsCreds){
+    private RekognizeComparator( ){
         client = AmazonRekognitionClientBuilder
             .standard()
-            .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
             .build();
         similarityScores = new HashMap<PairedKey, Float>();
     }
@@ -58,9 +53,9 @@ class RekognizeComparator {
         return similarityScores;
     }
 
-    public static RekognizeComparator getInstance(BasicAWSCredentials awsCreds){
+    public static RekognizeComparator getInstance(){
         if(instance == null){
-            instance = new RekognizeComparator(awsCreds);
+            instance = new RekognizeComparator();
         }
         return instance;
     }
