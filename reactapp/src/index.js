@@ -3,7 +3,6 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 import './index.css';
 import AWS from 'aws-sdk';
-import CognitoIdentityClient from 'aws-sdk'
 
 
 class ComparatorInitiator extends React.Component {
