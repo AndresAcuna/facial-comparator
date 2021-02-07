@@ -16,7 +16,7 @@ The directory will contain three directories
 The repository does not contain any of the dependencies, both
 for the Lambda and the React app.
 
-Instructions for uploading the React application:
+Instructions for running the React application:
 
 The package.json is located in the reactapp/ directory, navigate
 to the reactapp/ directory and run:
